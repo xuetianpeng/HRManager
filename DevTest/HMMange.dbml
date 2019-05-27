@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HManager" Class="HMMangeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=XTPSHome1;Initial Catalog=HManager;Persist Security Info=True;User ID=sa;Pooling=False" SettingsObjectName="DevTest.Properties.Settings" SettingsPropertyName="HManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.T_Department" Member="T_Department">
+    <Type Name="T_Department">
+      <Column Name="Department_ID" Member="部门编号" Storage="_Department_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Department_Name" Member="部门名称" Storage="_Department_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Manager" Member="部门经理" Storage="_Manager" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Auxiliary_Manager" Member="辅助经理" Storage="_Auxiliary_Manager" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Employees" Member="T_Employees">
+    <Type Name="T_Employees">
+      <Column Name="Emp_ID" Member="员工编号" Storage="_Emp_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Department_ID" Member="部门编号" Storage="_Department_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Emp_Name" Member="姓名" Storage="_Emp_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Post_ID" Member="职位编号" Storage="_Post_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EDP_IDCard" Member="身份证" Storage="_EDP_IDCard" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Emp_In" Member="入职时间" Storage="_Emp_In" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Emp_Out" Member="离职时间" Storage="_Emp_Out" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Phone" Member="手机" Storage="_Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Other_Wages" Member="津贴" Storage="_Other_Wages" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Member="备注" Storage="_Remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_InCome_Type" Member="T_InCome_Type">
+    <Type Name="T_InCome_Type">
+      <Column Name="InCome_Type_ID" Member="收入类型编号" Storage="_InCome_Type_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InCome_Type_Name" Member="收入类型" Storage="_InCome_Type_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Post" Member="T_Post">
+    <Type Name="T_Post">
+      <Column Name="Post_ID" Member="职位编号" Storage="_Post_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Post_Name" Member="职位名称" Storage="_Post_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Spend" Member="T_Spend">
+    <Type Name="T_Spend">
+      <Column Name="Spend_ID" Member="支出编号" Storage="_Spend_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Spend_Type_ID" Member="支出类型编号" Storage="_Spend_Type_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Spend_Date" Member="支出日期" Storage="_Spend_Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Depart" Member="部门编号" Storage="_Depart" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pay_Type_ID" Member="支付类型编号" Storage="_Pay_Type_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Member="备注" Storage="_Remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Spend_Type" Member="T_Spend_Type">
+    <Type Name="T_Spend_Type">
+      <Column Name="Spend_Type_ID" Member="支出类型编号" Storage="_Spend_Type_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Spend_Type_Name" Member="支出类型" Storage="_Spend_Type_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Commission" Member="T_Commission">
+    <Type Name="T_Commission">
+      <Column Name="Commission_ID" Member="编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Low_limit" Member="业绩下限" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Up_limit" Member="业绩上限" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Salary" Member="底薪" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="bonus" Member="奖金" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Member="提成比率" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Post_ID" Member="职务" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Special_Percentage" Member="高端提成比率" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Special" Member="高端标志" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Commission" Member="V_Commission">
+    <Type Name="V_Commission">
+      <Column Name="Post_Name" Member="职务" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Low_limit" Member="业绩下限" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Up_limit" Member="业绩上限" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Salary" Member="底薪" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="bonus" Member="奖金" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Member="提成比率" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Special" Member="是否高端" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Pay_Type" Member="T_Pay_Type">
+    <Type Name="T_Pay_Type">
+      <Column Name="Pay_Type_ID" Member="支付类型编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Pay_Type_Name" Member="支付类型名称" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Pay_Type_Im" Member="支付类型图片" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_ReSume" Member="T_ReSume">
+    <Type Name="T_ReSume">
+      <Column Name="A_ID" Member="编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Department_ID" Member="部门编号" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="A_Name" Member="姓名" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="A_Sex" Member="男" Storage="_性别" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="A_Age" Member="年龄" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="A_IDCard" Member="身份证号" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="R_Type" Member="简历类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="A_Postion" Member="应聘职位" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EX_Wages" Member="期待工资" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Now_Company" Member="现在公司" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Now_Postion" Member="现在职位" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Hob" Member="工作经验" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tel" Member="座机" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Member="手机" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Member="电子邮箱" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Domicle" Member="居住地" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Education" Member="学历" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="School" Member="学校" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Major" Member="专业" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="A_Date" Member="应聘日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Sign_Date" Member="缴费日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Appointment_Date" Member="预约日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Hand_Date" Member="处理日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Sign_Type" Member="签约类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bill_No" Member="订单号" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Services_Charge" Member="档案费" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Deposit" Member="押金" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Special_Cost" Member="服务费" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="A_State" Member="状态编号" Storage="_状态" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sign_State" Member="签约情况编号" Storage="_签约状态" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Department" Member="V_Department">
+    <Type Name="V_Department">
+      <Column Name="Department_ID" Member="部门编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Department_Name" Member="部门名称" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Manager_Name" Member="经理" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Auxiliary_Manager_Name" Member="辅助经理" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Employees" Member="V_Employees">
+    <Type Name="V_Employees">
+      <Column Name="Emp_ID" Member="员工编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Department_Name" Member="部门" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Emp_Name" Member="姓名" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Post_Name" Member="职务" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EDP_IDCard" Member="身份证" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Emp_In" Member="入职日期" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Emp_Out" Member="离职日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Phone" Member="手机" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Other_Wages" Member="津贴" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Member="备注" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_State" Member="T_State">
+    <Type Name="T_State">
+      <Column Name="State_ID" Member="状态编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="State_Name" Member="状态名称" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Sign" Member="T_Sign">
+    <Type Name="T_Sign">
+      <Column Name="Sign_ID" Member="签约情况编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Sign_Name" Member="签约情况" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_ReSume" Member="V_ReSume">
+    <Type Name="V_ReSume">
+      <Column Name="A_ID" Member="简历编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Department_Name" Member="部门" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="A_Name" Member="姓名" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="A_Sex" Member="男" Storage="_性别" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="A_Age" Member="年龄" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="A_IDCard" Member="身份证" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="R_Type" Member="简历类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="A_Postion" Member="应聘职位" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EX_Wages" Member="期待薪资" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Now_Company" Member="现在公司" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Now_Postion" Member="现在职位" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Hob" Member="工作经验" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tel" Member="座机" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Member="手机" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Member="电子邮箱" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Domicle" Member="居住地" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Education" Member="学历" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="School" Member="毕业学校" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Major" Member="专业" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="A_Date" Member="应聘日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Sign_Date" Member="签约日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Appointment_Date" Member="预约日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Hand_Date" Member="处理日期" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Sign_Type" Member="签约类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bill_No" Member="订单号" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Services_Charge" Member="档案费" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Deposit" Member="押金" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Special_Cost" Member="服务费" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="State_Name" Member="状态" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sign_Name" Member="签约情况" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Enterprise" Member="T_Enterprise">
+    <Type Name="T_Enterprise">
+      <Column Name="Enterprise_ID" Member="企业编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Enterprise" Member="企业名称" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Member="地址" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Phone" Member="手机" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Need_Emp" Member="是否招聘" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Member="备注" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Position" Member="T_Position">
+    <Type Name="T_Position">
+      <Column Name="Position_ID" Member="岗位编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position_Name" Member="岗位名称" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Enterprise_ID" Member="企业编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Need" Member="是否招聘" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Need_No" Member="招聘人数" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Insurance" Member="简介" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Accommodation" Member="包食宿" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Senior" Member="是否高端" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reback" Member="回扣" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Member="备注" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Employees" Member="T_EmployessPw">
+    <Type Name="T_EmployessPw">
+      <Column Name="Emp_ID" Member="员工编号" Storage="_Emp_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Department_ID" Member="部门编号" Storage="_Department_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Emp_Name" Member="员工姓名" Storage="_Emp_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Post_ID" Member="职位编号" Storage="_Post_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Member="备注" Storage="_Remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Pw" Member="密码" Storage="_Pw" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Appointments" Member="Appointments">
+    <Type Name="Appointments">
+      <Column Name="UniqueID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="AllDay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Label" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceIDs" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReminderInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RecurrenceInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeZoneId" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CustomField1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Emp_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Resources" Member="Resources">
+    <Type Name="Resources">
+      <Column Name="UniqueID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Color" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CustomField1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Achievement" Member="T_Achievement">
+    <Type Name="T_Achievement">
+      <Column Name="YJ_ID" Member="业绩编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YJ_Date" Member="业绩日期" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Department_ID" Member="部门编号" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="A_ID" Member="简历编号" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bill_No" Member="缴费单号" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Achi_State" Member="业绩状态" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_PayList" Member="T_PayList">
+    <Type Name="T_PayList">
+      <Column Name="PayList_ID" Member="支付编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YJ_ID" Member="业绩编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pay_Type_ID" Member="支付方式编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pay_NO" Member="支付金额" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_ChargeList" Member="T_ChargeList">
+    <Type Name="T_ChargeList">
+      <Column Name="ChargeList_ID" Member="缴费编号" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="YJ_ID" Member="业绩编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InCome_Type_ID" Member="收费类型" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Member="收费金额" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Done_ReBate" Member="公关费用" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="App_Date" Member="收费日期" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Done_Date" Member="完成日期" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Done" Member="是否完成" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Achievement" Member="V_Achievement">
+    <Type Name="V_Achievement">
+      <Column Name="YJ_ID" Member="业绩编号" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YJ_Date" Member="业绩日期" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Department_Name" Member="部门名称" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="A_ID" Member="简历编号" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="A_Name" Member="应聘者姓名" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="A_IDCard" Member="身份证" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="InCome_Type_Name" Member="收款项目" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Cost" Member="收费金额" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Done_ReBate" Member="公关金额" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="App_Date" Member="收款日期" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Done_Date" Member="完成日期" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Done" Member="是否完成" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Bill_No" Member="缴费单号" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Achi_State" Member="业绩状态" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GETUNTREATED_RESUME" Method="GETUNTREATED_RESUME">
+    <Parameter Name="ByDate1" Parameter="byDate1" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ByDate2" Parameter="byDate2" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="GETUNTREATED_RESUMEResult">
+      <Column Name="未处理" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="已拨打" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="无意上门" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="预约上门" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="未上门" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="上门未签约" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="已签约" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
